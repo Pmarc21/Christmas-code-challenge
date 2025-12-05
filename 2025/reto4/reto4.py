@@ -5,8 +5,7 @@ def decode_santa_pin(code: str) -> str:
     INIT_COUNTER = '['
     END_COUNTER = ']'
     array_numbers = []
-    code_aux = code.split(']')
-    print(code_aux)
+    code_aux = list(code)
     for i in range(len(code_aux)):
         if code_aux[i] == INIT_COUNTER:
             sum_total = 0
