@@ -18,7 +18,6 @@ Usa diferencias en segundos, no en milisegundos.
 Redondea siempre hacia abajo (floor): solo segundos completos.
 '''
 from datetime import datetime
-from math import floor
 def time_until_take_off(from_time: str, take_off_time: str) -> int:
   from_time_norm = from_time.replace("*","-").replace("@", " ").replace("|", ":").replace(" NP", "")
   from_time_aux = datetime.strptime(from_time_norm, "%Y-%m-%d %H:%M:%S")
@@ -27,7 +26,7 @@ def time_until_take_off(from_time: str, take_off_time: str) -> int:
   take_off_time_norm = take_off_time.replace("*","-").replace("@", " ").replace("|", ":").replace(" NP", "")
   take_off_time_aux = datetime.strptime(take_off_time_norm, "%Y-%m-%d %H:%M:%S")
   take_off_time_aux_2 = take_off_time_aux.timestamp()
-  return floor(take_off_time_aux_2 - from_time_aux_2)
+  return round(take_off_time_aux_2 - from_time_aux_2)
 
 from_time = "2025*12*25@00|00|00 NP"
 take_off_time = "2025*12*24@12|00|00 NP"
